@@ -8,7 +8,7 @@
 
 # Add a feed source
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
-sed -i '$a src-git rtl8821cu https://github.com/morrownr/8821cu-20210916.git' feeds.conf
+sed -i '$a src-git rtl8821cu https://github.com/morrownr/8821cu-20210916.git' feeds.conf.default
 
 # other
 # rm -rf package/lean/{samba4,luci-app-samba4,luci-app-ttyd}
