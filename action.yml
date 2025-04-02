@@ -1,11 +1,11 @@
 name: "Make OpenWrt"
-author: "https://github.com/ophub/amlogic-s9xxx-openwrt"
+author: "https://github.com/pingdongyi/amlogic-s9xxx-openwrt"
 description: "Support Amlogic, Rockchip and Allwinner boxes."
 inputs:
   mode:
     description: "Select script."
     required: false
-    default: "ophub"
+    default: "pingdongyi"
   openwrt_path:
     description: "Select armvirt64 file path."
     required: false
@@ -17,7 +17,7 @@ inputs:
   kernel_repo:
     description: "Select kernel repository."
     required: false
-    default: "ophub/kernel"
+    default: "pingdongyi/kernel"
   kernel_usage:
     description: "Set the tags of the stable kernel."
     required: false
@@ -45,7 +45,7 @@ runs:
     - shell: bash
       run: |
         cd ${{ github.action_path }}
-        echo -e "ophub package actions path: [ ${PWD} ]"
+        echo -e "pingdongyi package actions path: [ ${PWD} ]"
 
         openwrt_filename="${{ inputs.openwrt_path }}"
         openwrt_savefile="${openwrt_filename##*/}"

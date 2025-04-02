@@ -67,7 +67,7 @@ According to the [GitHub Docs](https://docs.github.com/en/actions/security-guide
 
 ## 3. Fork the repository and set Workflow permissions
 
-Now you can Fork the repository. Open the repository https://github.com/ophub/amlogic-s9xxx-openwrt, click the Fork button in the upper right, and copy a copy of the repository code to your own account. Wait a few seconds, after the Fork is completed, visit amlogic-s9xxx-openwrt in your own repository under your own account. In the upper right corner `Settings` > `Actions` > `General` > `Workflow permissions` in the left navigation bar, select `Read and write permissions` and save. The illustration is as follows:
+Now you can Fork the repository. Open the repository https://github.com/pingdongyi/amlogic-s9xxx-openwrt, click the Fork button in the upper right, and copy a copy of the repository code to your own account. Wait a few seconds, after the Fork is completed, visit amlogic-s9xxx-openwrt in your own repository under your own account. In the upper right corner `Settings` > `Actions` > `General` > `Workflow permissions` in the left navigation bar, select `Read and write permissions` and save. The illustration is as follows:
 
 <div style="width:100%;margin-top:40px;margin:5px;">
 <img src=https://user-images.githubusercontent.com/68696949/109418568-0eb2f880-7a04-11eb-81c9-194e32382998.jpg width="300" />
@@ -322,15 +322,15 @@ The support for uploading to third parties comes from https://github.com/Mikubil
 1. Get the source code of the plugin `luci-app-amlogic`:
 ```shell
 rm -rf package/luci-app-amlogic
-git clone https://github.com/ophub/luci-app-amlogic.git package/luci-app-amlogic
+git clone https://github.com/pingdongyi/luci-app-amlogic.git package/luci-app-amlogic
 ```
 2. After executing `menuconfig`, you can select the plugin `LuCI ---> 3. Applications  ---> <*> luci-app-amlogic`
 
-For more instructions on the plugin, see: [https://github.com/ophub/luci-app-amlogic](https://github.com/ophub/luci-app-amlogic)
+For more instructions on the plugin, see: [https://github.com/pingdongyi/luci-app-amlogic](https://github.com/pingdongyi/luci-app-amlogic)
 
 ### 8.2 Install Using the Operation Panel
 
-1. For the `Rockchip` platform, please refer to the introduction in the [Chapter 8](https://github.com/ophub/amlogic-s9xxx-armbian/blob/main/documents/README.md#8-installing-armbian-to-emmc) of the instruction manual, which is the same as the Armbian installation method.
+1. For the `Rockchip` platform, please refer to the introduction in the [Chapter 8](https://github.com/pingdongyi/amlogic-s9xxx-armbian/blob/main/documents/README.md#8-installing-armbian-to-emmc) of the instruction manual, which is the same as the Armbian installation method.
 
 2. For the `Amlogic` and `Allwinner` platforms, use tools like [Rufus](https://rufus.ie/) or [balenaEtcher](https://www.balena.io/etcher/) to write the firmware into the USB, then insert the USB with the firmware into the box. Access the default IP of OpenWrt from the browser: 192.168.1.1 → `Log in to OpenWrt using the default account` → `System Menu` → `Amlogic Treasure Box` → `Install OpenWrt`.
 
@@ -372,7 +372,7 @@ After you complete the personalized configuration of OpenWrt locally, save and e
 
 GitHub's official detailed instructions on how to use GitHub Actions are available. You can start getting to know it here: [GitHub Actions Quick Start](https://docs.github.com/en/actions/quickstart)
 
-Let's take a simple look at the current compilation process control file being used in the repository as an example: [build-openwrt.yml](https://github.com/ophub/amlogic-s9xxx-openwrt/blob/main/.github/workflows/build-openwrt.yml)
+Let's take a simple look at the current compilation process control file being used in the repository as an example: [build-openwrt.yml](https://github.com/pingdongyi/amlogic-s9xxx-openwrt/blob/main/.github/workflows/build-openwrt.yml)
 
 #### 10.2.1 Changing the Address and Branch of the Compilation Source Code Repository
 
@@ -395,7 +395,7 @@ Around line 139, look for the compile step titled `Build OpenWrt firmware`, and 
 ```yaml
 - name: Build OpenWrt firmware
   if: ${{ steps.compile.outputs.status }} == 'success' && !cancelled()
-  uses: ophub/amlogic-s9xxx-openwrt@main
+  uses: pingdongyi/amlogic-s9xxx-openwrt@main
   with:
     openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
     openwrt_board: ${{ inputs.openwrt_board }}
@@ -485,7 +485,7 @@ For more help, please check [packages](https://openwrt.org/packages/start)
 
 The Android TV system on the device is usually backed up and restored using `openwrt-ddbr`.
 
-In addition, the Android system can also be flashed into eMMC using the method of flashing via a cable. The download image of the Android system can be found in [Tools](https://github.com/ophub/kernel/releases/tag/tools).
+In addition, the Android system can also be flashed into eMMC using the method of flashing via a cable. The download image of the Android system can be found in [Tools](https://github.com/pingdongyi/kernel/releases/tag/tools).
 
 #### 10.8.1 Backup and Recovery Using openwrt-ddbr
 
@@ -495,9 +495,9 @@ Before installing the OpenWrt system on a brand-new box, it is suggested that yo
 
 - Generally, if you can boot from USB by plugging in the power again, all you need to do is reinstall, try a few more times.
 
-- If the box does not boot from the USB and the screen is black after being connected to a monitor, it's necessary to short-circuit the box for initialization. First, restore the box to the original Android system, then reflash the OpenWrt system. Firstly, download the [amlogic_usb_burning_tool](https://github.com/ophub/kernel/releases/tag/tools) system recovery tool and install it. Prepare a [USB A-A data cable](https://user-images.githubusercontent.com/68696949/159267576-74ad69a5-b6fc-489d-b1a6-0f8f8ff28634.png) and a [paper clip](https://user-images.githubusercontent.com/68696949/159267790-38cf4681-6827-4cb6-86b2-19c7f1943342.png).
+- If the box does not boot from the USB and the screen is black after being connected to a monitor, it's necessary to short-circuit the box for initialization. First, restore the box to the original Android system, then reflash the OpenWrt system. Firstly, download the [amlogic_usb_burning_tool](https://github.com/pingdongyi/kernel/releases/tag/tools) system recovery tool and install it. Prepare a [USB A-A data cable](https://user-images.githubusercontent.com/68696949/159267576-74ad69a5-b6fc-489d-b1a6-0f8f8ff28634.png) and a [paper clip](https://user-images.githubusercontent.com/68696949/159267790-38cf4681-6827-4cb6-86b2-19c7f1943342.png).
 
-- For example, for the x96max+ model, confirm the location of the [short-circuit point](https://user-images.githubusercontent.com/68696949/110590933-67785300-81b3-11eb-9860-986ef35dca7d.jpg) on the box's motherboard, download the [Android TV firmware package](https://github.com/ophub/kernel/releases/tag/tools) for the box. The Android TV system firmware and corresponding short-circuit point diagrams for other common devices can also be [downloaded and viewed here](https://github.com/ophub/kernel/releases/tag/tools).
+- For example, for the x96max+ model, confirm the location of the [short-circuit point](https://user-images.githubusercontent.com/68696949/110590933-67785300-81b3-11eb-9860-986ef35dca7d.jpg) on the box's motherboard, download the [Android TV firmware package](https://github.com/pingdongyi/kernel/releases/tag/tools) for the box. The Android TV system firmware and corresponding short-circuit point diagrams for other common devices can also be [downloaded and viewed here](https://github.com/pingdongyi/kernel/releases/tag/tools).
 
 ```shell
 Operation method:
@@ -553,7 +553,7 @@ Based on the situation of your own device, there are two methods to use: initial
 - Insert the USB/TF/SD with the flashed firmware into the box.
 - Enable developer mode: Settings → About Device → Version number (e.g., X96max plus...), quickly click the left mouse button 5 times on the version number, until the system shows a prompt saying `Developer mode is enabled`.
 - Enable USB debugging mode: System → Advanced options → Developer options (set `Enable USB debugging` to enabled). Enable `ADB` debugging.
-- Install the ADB tool: Download [adb](https://github.com/ophub/kernel/releases/tag/tools) and unzip it, copy the three files `adb.exe`, `AdbWinApi.dll`, `AdbWinUsbApi.dll` to both the `system32` and `syswow64` folders in the `c://windows/` directory, then open the `cmd` command panel, use the `adb --version` command, if it shows something, it means you can use it now.
+- Install the ADB tool: Download [adb](https://github.com/pingdongyi/kernel/releases/tag/tools) and unzip it, copy the three files `adb.exe`, `AdbWinApi.dll`, `AdbWinUsbApi.dll` to both the `system32` and `syswow64` folders in the `c://windows/` directory, then open the `cmd` command panel, use the `adb --version` command, if it shows something, it means you can use it now.
 - Enter `cmd` command mode. Type the `adb connect 192.168.1.137` command (modify the IP according to your box, you can check it in the router device that the box is connected to), if the connection is successful, it will display `connected to 192.168.1.137:5555`.
 - Type the `adb shell reboot update` command, the box will restart and boot from the USB/TF/SD you inserted, access the firmware IP address from the browser, or SSH access to enter the firmware.
 - Login to the OpenWrt system: Directly connect your box to your computer → Turn off the WIFI option of the computer, only use the wired network card → Set the network of the wired network card to the same segment as OpenWrt, if the default IP of OpenWrt is: `192.168.1.1`, you can set the computer's IP to `192.168.1.2`, the subnet mask is set to `255.255.255.0`, besides these 2 options, no other options need to be set. Then you can enter OpenWrt from the browser. The default IP: `192.168.1.1`, default account: `root`, default password: `password`.

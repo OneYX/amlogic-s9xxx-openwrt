@@ -6,7 +6,7 @@
 # warranty of any kind, whether express or implied.
 #
 # This file is a part of the make OpenWrt for Amlogic, Rockchip and Allwinner
-# https://github.com/ophub/amlogic-s9xxx-openwrt
+# https://github.com/pingdongyi/amlogic-s9xxx-openwrt
 #
 # Function: Customize the startup script, adding content as needed.
 # Dependent script: /etc/rc.local
