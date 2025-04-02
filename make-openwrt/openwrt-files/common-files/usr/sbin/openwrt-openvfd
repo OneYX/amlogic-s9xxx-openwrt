@@ -6,11 +6,11 @@
 # warranty of any kind, whether express or implied.
 #
 # This file is a part of the Armbian for Amlogic TV Boxes
-# https://github.com/pingdongyi/amlogic-s9xxx-openwrt
+# https://github.com/ophub/amlogic-s9xxx-openwrt
 #
 # Description: LED display control
 # Copyright (C) 2022- https://github.com/unifreq/openwrt_packit
-# Copyright (C) 2022- https://github.com/pingdongyi/amlogic-s9xxx-openwrt
+# Copyright (C) 2022- https://github.com/ophub/amlogic-s9xxx-openwrt
 #
 # Function          : Command
 # Default           : openwrt-openvfd
@@ -31,7 +31,7 @@
 openvfd_path="/usr/share/openvfd"
 openvfd_service="${openvfd_path}/vfdservice"
 # The openvfd files download repository
-openvfd_repo="https://github.com/pingdongyi/amlogic-s9xxx-armbian.git"
+openvfd_repo="https://github.com/ophub/amlogic-s9xxx-armbian.git"
 openvfd_dir="build-armbian/armbian-files/platform-files/amlogic/rootfs/usr/share/openvfd"
 #
 # Set font color

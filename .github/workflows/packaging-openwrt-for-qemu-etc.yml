@@ -1,7 +1,7 @@
 #=====================================================================================
 # Description: Packaging OpenWrt for qemu, allwinner, rockchip and amlogic
 # Copyright (C) 2021 https://github.com/unifreq/openwrt_packit
-# Copyright (C) 2021 https://github.com/pingdongyi/flippy-openwrt-actions
+# Copyright (C) 2021 https://github.com/ophub/flippy-openwrt-actions
 #=====================================================================================
 
 name: Packaging QEMU and others
@@ -77,10 +77,10 @@ on:
       kernel_repo:
         description: "Set the kernel repository"
         required: false
-        default: "pingdongyi/kernel"
+        default: "ophub/kernel"
         type: choice
         options:
-          - pingdongyi/kernel
+          - ophub/kernel
           - breakingbadboy/OpenWrt
       auto_kernel:
         description: "Auto use the latest kernel"
@@ -98,10 +98,10 @@ on:
       builder_name:
         description: "Set OpenWrt builder signature."
         required: false
-        default: "pingdongyi"
+        default: "ophub"
         type: choice
         options:
-          - pingdongyi
+          - ophub
           - angel
           - yourname
 
@@ -162,7 +162,7 @@ jobs:
         working-directory: /builder
         if: ${{ steps.init.outputs.status }} == 'success' && !cancelled()
         run: |
-          armvirt_tarfile_repo="pingdongyi/amlogic-s9xxx-openwrt"
+          armvirt_tarfile_repo="ophub/amlogic-s9xxx-openwrt"
           releases_tag_keywords="OpenWrt_lede_"
 
           armvirt_tarfile_path="openwrt/output"
@@ -204,7 +204,7 @@ jobs:
           ln -sf /builder/${SELECT_PACKITPATH} /opt/${SELECT_PACKITPATH}
 
       - name: Packaging OpenWrt
-        uses: pingdongyi/flippy-openwrt-actions@main
+        uses: ophub/flippy-openwrt-actions@main
         if: ${{ steps.down.outputs.status }} == 'success' && !cancelled()
         env:
           OPENWRT_ARMVIRT: openwrt/output/*rootfs.tar.gz

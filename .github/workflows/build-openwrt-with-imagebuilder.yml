@@ -1,5 +1,5 @@
 #=====================================================================================
-# https://github.com/pingdongyi/amlogic-s9xxx-openwrt
+# https://github.com/ophub/amlogic-s9xxx-openwrt
 # Description:   Build OpenWrt with Image Builder
 # Instructions:  https://openwrt.org/docs/guide-user/additional-software/imagebuilder
 # Download from: https://downloads.openwrt.org/releases
@@ -200,10 +200,10 @@ on:
       kernel_repo:
         description: "Set the kernel repository"
         required: false
-        default: "pingdongyi/kernel"
+        default: "ophub/kernel"
         type: choice
         options:
-          - pingdongyi/kernel
+          - ophub/kernel
       kernel_usage:
         description: "Set the tags of the stable kernel."
         required: false
@@ -217,10 +217,10 @@ on:
       builder_name:
         description: "Set OpenWrt builder signature."
         required: false
-        default: "pingdongyi"
+        default: "ophub"
         type: choice
         options:
-          - pingdongyi
+          - ophub
           - angel
           - yourname
 
@@ -303,7 +303,7 @@ jobs:
           for file in *; do [[ ! -d "${file}" ]] && sha256sum "${file}" >"${file}.sha"; done
 
           [[ -d "/builder/openwrt" ]] || mkdir -p /builder/openwrt
-          ln -sf /builder/openwrt /home/runner/work/_actions/pingdongyi/amlogic-s9xxx-openwrt/main/openwrt
+          ln -sf /builder/openwrt /home/runner/work/_actions/ophub/amlogic-s9xxx-openwrt/main/openwrt
           df -hT ${PWD}
           echo "status=success" >> ${GITHUB_OUTPUT}
 
@@ -320,7 +320,7 @@ jobs:
 
       - name: Packaging OpenWrt
         if: ${{ steps.clean.outputs.status }} == 'success' && !cancelled()
-        uses: pingdongyi/amlogic-s9xxx-openwrt@main
+        uses: ophub/amlogic-s9xxx-openwrt@main
         with:
           openwrt_path: imagebuilder/output/*rootfs.tar.gz
           openwrt_board: ${{ inputs.openwrt_board }}

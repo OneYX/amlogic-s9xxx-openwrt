@@ -1,5 +1,5 @@
 #=====================================================================================
-# https://github.com/pingdongyi/amlogic-s9xxx-openwrt
+# https://github.com/ophub/amlogic-s9xxx-openwrt
 # Description: Build the Docker image of OpenWrt
 # Instructions: https://github.com/docker/build-push-action
 # Build and Push to: https://hub.docker.com/
@@ -23,10 +23,10 @@ on:
       docker_img:
         description: "Set the docker image"
         required: false
-        default: "pingdongyi/openwrt-aarch64:latest"
+        default: "ophub/openwrt-aarch64:latest"
         type: choice
         options:
-          - pingdongyi/openwrt-aarch64:latest
+          - ophub/openwrt-aarch64:latest
 
 env:
   TZ: America/New_York
