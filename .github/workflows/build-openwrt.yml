@@ -12,7 +12,7 @@ on:
       source_branch:
         description: "Select the source branch"
         required: false
-        default: "lede-master"
+        default: "immortalwrt-master"
         type: choice
         options:
           - openwrt-main
@@ -221,6 +221,10 @@ on:
         options:
           - save
           - temp
+      openwrt_size:
+        description: "Set the rootfs size(Unit: MiB)."
+        required: false
+        default: "128/1024"
       builder_name:
         description: "Set OpenWrt builder signature."
         required: false
@@ -401,6 +405,7 @@ jobs:
           auto_kernel: ${{ inputs.auto_kernel }}
           kernel_repo: ${{ inputs.kernel_repo }}
           kernel_usage: ${{ inputs.kernel_usage }}
+          openwrt_size: ${{ inputs.openwrt_size }}
           builder_name: ${{ inputs.builder_name }}
 
       - name: Upload the packaged OpenWrt
