@@ -336,7 +336,6 @@ jobs:
 
       - name: Update feeds
         run: |
-          [[ -f "${FEEDS_CONF}" ]] && cat ${FEEDS_CONF}
           cd openwrt/ && ./scripts/feeds update -a
 
       - name: Install feeds
